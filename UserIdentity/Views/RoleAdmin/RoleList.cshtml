@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "RoleList";
+
+
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+
+        Roller
+
+        <a href="/RoleAdmin/Create" class="btn btn-primary btn-sm"  style="float:right"><i class="bi bi-plus-square"></i> Create</a>
+
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+
+        @if (Model.Count() == 0)  //buraya gönderilen rollerin sayısı sıfır ise
+        {
+            <tr>
+                <td colspan="3"> Role Yok:( </td>
+            </tr>
+
+        }
+        else
+        {
+            foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                    <td>
+                        @*Delete actionuna (POST)giderken beraberinde bir Id parametresi gönderiyoruz*@
+                        @using (Html.BeginForm("Delete", "RoleAdmin", new { id = role.Id }))
+                        {
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        }
+
+                        @*Güncelle buton üzerinde yazan değer, Edit ise actionumuz (GET)giderken beraberinde bir Id parametresi gönderiyoruz*@
+                        @Html.ActionLink("Güncelle", "Edit", new { id = role.Id }, new { @class = "btn btn-primary btn-sm" }) @*role.ıd ıdenityRole'den*@
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+</div>

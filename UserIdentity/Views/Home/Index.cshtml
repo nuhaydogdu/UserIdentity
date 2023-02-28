@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+<hr />
+
+@*//(User.Identity.IsAuthenticated) Kullanıcı login olmuşsatrue dönecek*@
+@if (User.Identity.IsAuthenticated)
+{
+    <label class="label label-info">
+        @User.Identity.Name
+    </label>
+    <a href="/Account/Logout" class="btn btn-danger">LogOut</a>
+    <hr />
+    <a href="/UserAdmin/UserList" class="btn btn-success">User List</a>
+    <a href="/RoleAdmin/RoleList" class="btn btn-success">Role List <span style="font-size:10px; color:black;">(sadece admin rolüne sahip olanlar)</span></a>
+
+
+
+}
+else
+{
+    <a href="/Account/Login" class="btn btn-success"> Login</a>
+    <a href="/Account/Register" class="btn btn-primary"> Register</a>
+
+}
+

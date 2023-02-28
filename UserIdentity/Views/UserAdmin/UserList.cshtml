@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<UserIdentity.Identity.ApplicationUser>
+@*gönderilen bilgilerin tipi -ApplicationUser (AdminController'da Index Actionu içerisinden gönderiliyor)*@
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Users
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>UserName</th>
+            <th>Email</th>
+        </tr>
+        @*(Model.Count() == 0) Herhangi bir kullanıcımız yoksa true dönecek*@
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan=" 3" class="text-center">
+                    @*colspan 3 satırı birleştirmek için*@
+                    Kullanıcı Yok :(
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+
+                </tr>
+            }
+
+        }
+    </table>
+
+</div>
+
+

@@ -1,0 +1,8 @@
+Microsoft.AspNet.Identity.EntityFramework
+Microsoft.AspNet.Identity.Owin
+Microsoft.Owin.Host.SystemWeb
+
+connectionStrings'i Web.config içerisinde tanımlıyoruz. 
+connectionStrings'ede ilgili DbContext Sınıfının Constructor'undan ulaşıyoruz. 
+
+OwinStartUp sınıfını(IdentitiyConfig) da Web.config içerisinde uygulamamıza tanıttık.
